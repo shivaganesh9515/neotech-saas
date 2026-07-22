@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-brand-primary: #e5e5e5;
+  --color-brand-secondary: #107a4d;
+  --color-neutral-background: #f2f2f2;
+  --color-neutral-surface: #f4f4f5;
+  --color-neutral-card: rgba(249, 247, 243, 0.5);
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #4a4a4a;
+  --color-text-onPrimary: #1a1a1a;
+  --font-primary: "Space Grotesk", sans-serif;
+  --font-secondary: "Space Mono", monospace;
+  --shadow-cta: 4px 4px 0px 0px #1a1a1a;
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* Grid Pattern Background (Diagonal) */
+.bg-grid-pattern {
+  background-image:
+    repeating-linear-gradient(45deg, rgba(0, 0, 0, 0.07) 0px, rgba(0, 0, 0, 0.07) 1px, transparent 2px, transparent 6px),
+    repeating-linear-gradient(-45deg, rgba(0, 0, 0, 0.07) 0px, rgba(0, 0, 0, 0.07) 1px, transparent 2px, transparent 6px);
+  filter: blur(1.5px);
+}
+
+/* Micro Grid for Subheader */
+.bg-grid-micro {
+  background-size: 10px 10px;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.25) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.25) 1px, transparent 1px);
+}
+
+/* Scroll Reveal */
+.animate-on-scroll-hidden {
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.animate-on-scroll-visible {
+  opacity: 1 !important;
+  transform: none !important;
+}
+.reveal-up { transform: translateY(40px); }
+.reveal-right { transform: translateX(-40px); }
+.reveal-scale { transform: scale(0.9); }
+
+/* Envelope Animation */
+@keyframes envelope-open {
+  0% { transform: rotateX(0deg); z-index: 10; }
+  100% { transform: rotateX(180deg); z-index: 1; }
+}
+@keyframes postcard-pop {
+  0% { transform: translateY(0) scale(0.9); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(-120px) scale(1.05); opacity: 1; }
+}
+.envelope-top {
+  transform-origin: top;
+  transition: transform 0.6s ease;
+}
+.animate-mail .envelope-top {
+  animation: envelope-open 0.8s forwards 0.5s;
+}
+.animate-mail .postcard {
+  animation: postcard-pop 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards 1.2s;
+}
+@keyframes grid-blink {
+  0%, 100% { opacity: 0.1; transform: scale(0.8); }
+  50% { opacity: 0.8; transform: scale(1); }
+}
+.animate-grid-blink {
+  animation: grid-blink 1.5s infinite alternate ease-in-out;
+}
